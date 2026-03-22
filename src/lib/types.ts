@@ -1,6 +1,7 @@
 export type Author = {
   id: number;
   name: string;
+  email?: string;
   slug?: string;
 };
 
@@ -8,18 +9,25 @@ export type NewsItemType = {
   id: number;
   title: string;
   slug: string;
-  summary: string;
-  text: string;
-  created?: string;
-  updated?: string;
+  intro: string;
+  content: string;
+  published?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  authorId?: number;
   author?: Author | null;
 };
 
+export type PaginationInfo = {
+  total: number;
+  limit: number;
+  offset: number;
+  count: number;
+};
+
 export type NewsResponse = {
-  items: NewsItemType[];
-  total?: number;
-  limit?: number;
-  offset?: number;
+  data: NewsItemType[];
+  pagination: PaginationInfo;
 };
 
 export type ApiErrorResponse = {
